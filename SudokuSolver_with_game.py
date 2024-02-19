@@ -291,7 +291,6 @@ class Screen:
                         else:
                             tile.is_selected = False
         else:
-            self.selected_tile = None
             for button in self.buttons:
                 if button.check_collision(mouse_x, mouse_y):
                     button.is_pressed = is_pressed
@@ -345,7 +344,7 @@ class Screen:
                 keys = pygame.key.get_pressed()
                 for i in range(len(keys)):
                     if keys[i]:
-                        if self.selected_tile:
+                        if self.selected_tile and self.selected_tile.is_selected:
                             if pygame.K_0 <= i <= pygame.K_9:
                                 if not self.selected_tile.is_preset:
                                     self.selected_tile.val = i - pygame.K_0
